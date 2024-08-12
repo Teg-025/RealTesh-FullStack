@@ -1,0 +1,14 @@
+.btn{
+    font-family: "Poppins";
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    background-color: #1d3895;
+    border: none;
+    color: white;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.6s;
+}
+.btn:hover{
+    transform: scale(1.12);
+}

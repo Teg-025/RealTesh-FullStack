@@ -1,0 +1,14 @@
+.achievments{
+    color: white;
+}
+
+.stat{
+    font-size: 2rem;
+}
+.stat>#plus-sign{
+    color: #c86438;
+}
+
+.achievment-name{
+    color: #c0c8cb;
+}

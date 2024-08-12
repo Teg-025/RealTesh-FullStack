@@ -1,0 +1,48 @@
+/* Book modal */
+.select-time,.select-date{
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.select-time{
+    margin-top: 2rem;
+}
+.flex-container{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.react-calendar{
+    font-family: "Poppins" !important;
+}
+
+.react-calendar__navigation__label{
+    font-family: "Poppins" !important;
+}
+
+.close-calendar-modal-btn{
+    cursor: pointer;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: white;
+    border: none;
+}
+
+#selectedTime{
+    padding: 0.2rem 0.6rem;
+    font-family: "Poppins";
+    font-size: 0.94rem;
+}
+
+.buttonContainer{
+    margin-top: 1.4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}

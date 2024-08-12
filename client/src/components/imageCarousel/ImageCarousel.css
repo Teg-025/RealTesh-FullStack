@@ -1,0 +1,75 @@
+.image-carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+
+.carousel-slide img {
+    width: 100%;
+    height: 13.2rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+/* Specific styles for ImageCarousel inside PropertyCard */
+.image-carousel .swiper {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
+    bottom: 10px;
+}
+
+
+.image-carousel .swiper-pagination-bullet {
+    background-color: rgb(211, 211, 211);
+    width: 6px;
+    height: 6px;
+}
+
+.image-carousel .swiper-pagination-bullet-active {
+    background-color: white !important;
+    width: 6px;
+    height: 6px;
+}
+
+
+.image-carousel .swiper-pagination-bullet-active-next{
+    opacity: 0.88;
+}
+
+.image-carousel .swiper-pagination-bullet-active-next-next{
+    opacity: 0.68;
+}
+.swiper-pagination-bullet-active-prev{
+    opacity: 0.92;
+}
+.image-carousel .swiper-pagination-bullet-active-prev-prev{
+    opacity: 0.72;
+}
+
+.image-carousel .swiper-button-next,
+.image-carousel .swiper-button-prev {
+    color: #070707;
+    width: 30px; 
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    display: none; 
+}
+
+.image-carousel .swiper-button-next::after,
+.image-carousel .swiper-button-prev::after {
+    font-size: 15px;
+}
+
+.image-carousel:hover .swiper-button-next,
+.image-carousel:hover .swiper-button-prev{
+    display: flex;
+}

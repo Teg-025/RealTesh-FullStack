@@ -1,0 +1,15 @@
+#propertyDesc{
+    margin: 1rem 0rem;
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    border: 1px solid #00000051;
+    border-radius: 0.4rem;
+    font-size: 0.94rem;
+    font-family: "Nunito sans";
+    resize: none;
+    min-width: 80%;
+    min-height: 40vh;
+    outline: none;
+}
+.descLabel{
+    margin-bottom: 0rem;
+}

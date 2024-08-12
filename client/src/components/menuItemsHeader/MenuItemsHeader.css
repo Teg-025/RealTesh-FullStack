@@ -1,0 +1,31 @@
+.right-menu-box{
+    display: flex;
+    gap:1.6rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.right-menu-box a, .right-menu-box p{
+    color: #eeeeeec9;
+    font-size: 1.12rem;
+    cursor: pointer;
+}
+
+@media (max-width:820px) {
+    .right-menu-box{
+        position: absolute;
+        top: 3.6rem;
+        right: 12%;
+        flex-direction: column;
+        background-color: white;
+        border-radius: 0.4rem;
+        padding: 0.6rem 1.4rem;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+        z-index: 99;
+        transition: all 0.4s ease-in;
+    }
+    .right-menu-box a, .right-menu-box p{
+        color: #12110f;
+    }
+}

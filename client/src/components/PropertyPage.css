@@ -1,0 +1,201 @@
+.property-page-body{
+    padding: 2rem 11.8%;
+}
+
+.propertyPage-propertyName{
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.property-heading{
+    position: relative;
+}
+
+.property-images-grid{
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.4rem;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    border-radius: 0.8rem;
+}
+
+.property-image{
+    overflow: hidden;
+    border-radius: 0.4rem;
+}
+
+.property-image img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.property-image:nth-child(1){
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.show-more-btn{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: white;
+    color: black;
+    font-family: "Nunito sans";
+    font-size: 1rem;
+    padding: 0.2rem 0.4rem;
+    border: 1px solid black;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.show-more-btn:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Images modal */
+
+.image-modal{
+    padding: 1rem;
+}
+
+.image-modal-content{
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 2rem;
+}
+
+.image-modal-content img{
+    width: 50%;
+    height: auto;
+    border-radius: 0.4rem;
+    object-fit: cover;
+}
+
+.close-modal-btn{
+    margin: 1rem;
+    background-color: white;
+    border: none;
+    position: fixed;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+/* property-info */
+
+.property-info-container{
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+}
+
+
+.property-basics{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    color: #3b2113;
+}
+
+.property-basic{
+    display: flex; justify-content: center;align-items: center;
+    gap: 0.4rem;
+}
+
+.property-desc{
+    margin-top: 2rem;
+    font-size: 0.98rem;
+    color: rgb(99, 96, 96)
+}
+
+.property-info{
+    min-width: 50%;
+    padding-top: 2rem;
+}
+
+.property-map{
+    min-width: 50%;
+    min-height: 100%;
+    overflow: hidden;
+    border-radius: 0.8rem;
+}
+
+.property-location{
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.92rem;
+    margin-top: 2rem;
+    color: gray;
+}
+
+.booking-btn{
+    margin-top: 2rem;
+    width: 100%;
+    font-family: "Poppins";
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    background-color: #1d3895;
+    border: none;
+    color: white;
+    border-radius: 0.4rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.property-type-and-price{
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #2b87cc;
+}
+
+.property-type{
+    font-weight: 600;
+}
+
+.per-month{
+    font-size: 0.92rem;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+
+@media (max-width: 880px) {
+    .property-page-body{
+        padding: 2rem 6%;
+    }
+}
+
+@media (max-width: 764px) {  
+    .property-info-container{
+        flex-wrap: wrap;
+    }
+    .property-map{
+        min-width: 100%;
+        min-height: 50vh;
+    }
+}
+
+@media (max-width: 426px) {
+}

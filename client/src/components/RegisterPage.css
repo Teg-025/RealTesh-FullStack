@@ -1,0 +1,46 @@
+.register-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background: url('../assets/register_background_new.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.register-container {
+    padding: 2.4rem;
+    background-color: #12110f;
+    opacity: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    border-radius: 8%;
+}
+
+.registerInput{
+    padding: 0.4rem;
+    outline: none;
+    border: none;
+    background-color: #12110f;
+    color: white;
+    min-width: 20rem;
+    text-align: center;
+    font-family: "Poppins";
+    border-bottom: 1px solid #bdb9b9ee;
+}
+
+.login-ref{
+    color: rgb(148, 144, 144);
+    font-size: 0.8rem;
+}
+.login-ref>a{
+    color: white;
+}
+.password-no-match{
+    color: rgb(172, 33, 33);
+    font-size: 0.94rem;
+}

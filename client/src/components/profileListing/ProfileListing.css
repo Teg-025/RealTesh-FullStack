@@ -1,0 +1,153 @@
+.profile-listings-container > .head {
+    font-size: 2.4rem;
+    font-weight: 600;
+}
+
+.profile-listings-container {
+    position: relative;
+    padding-top: 1rem;
+    overflow: hidden;
+    padding-bottom: 1rem;
+    padding-left: 2%;
+}
+
+.listing-container {
+    padding-top: 1rem;
+}
+
+/* Specific Swiper styles for ProfilePage */
+.listing-container .swiper {
+    overflow: visible;
+}
+
+.listing-container .swiper-button-next,
+.listing-container .swiper-button-prev {
+    position: absolute;
+    top: -30px; /* Adjust this value to position below the heading */
+    color: #3f87be;
+    width: 30px; 
+    height: 30px;
+    background-color: white;
+    font-weight: 600;
+}
+
+.listing-container .swiper-button-prev {
+    right: 70px;
+    left: auto;
+}
+
+.listing-container .swiper-button-next {
+    right: 30px;
+}
+
+.listing-container .swiper-button-next::after,
+.listing-container .swiper-button-prev::after {
+    font-size: 14px;
+}
+
+
+/* Specific styles for ImageCarousel inside PropertyCard */
+
+.listing-container .image-carousel .swiper {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+
+.listing-container horizontal > .swiper-pagination-bullets, .listing-container .swiper-pagination-bullets.swiper-pagination-horizontal{
+    bottom: 10px;
+}
+
+
+.listing-container .image-carousel .swiper-pagination-bullet {
+    background-color: rgb(211, 211, 211);
+    width: 6px;
+    height: 6px;
+}
+
+.listing-container .image-carousel .swiper-pagination-bullet-active {
+    background-color: white !important;
+    width: 6px;
+    height: 6px;
+}
+
+
+.listing-container .image-carousel .swiper-pagination-bullet-active-next{
+    opacity: 0.88;
+}
+
+.listing-container .image-carousel .swiper-pagination-bullet-active-next-next{
+    opacity: 0.68;
+}
+.listing-container .swiper-pagination-bullet-active-prev{
+    opacity: 0.92;
+}
+.listing-container .image-carousel .swiper-pagination-bullet-active-prev-prev{
+    opacity: 0.72;
+}
+
+.listing-container .image-carousel .swiper-button-next,
+.listing-container .image-carousel .swiper-button-prev {
+    top: 50%;
+    color: #070707;
+    width: 30px; 
+    height: 30px;
+    background-color: white;
+    border-radius: 50%;
+    font-weight: 600;
+    display: none; 
+}
+
+.listing-container .image-carousel .swiper-button-next{
+    left: auto;
+    right: 10px;
+}
+.listing-container .image-carousel .swiper-button-prev{
+    right: auto;
+    left: 10px;
+}
+
+
+.listing-container .image-carousel .swiper-button-next::after,
+.listing-container .image-carousel .swiper-button-prev::after {
+    font-size: 15px;
+}
+
+.listing-container .image-carousel:hover .swiper-button-next,
+.listing-container .image-carousel:hover .swiper-button-prev{
+    display: flex;
+}
+
+@media (max-width:420px) {
+    .profile-page-body {
+        padding: 2% 3.24%;
+    }
+    .listing-container .swiper-button-next,
+    .listing-container .swiper-button-prev {
+        position: absolute;
+        top: -36px; 
+    }
+    .listing-container .swiper-button-next{
+        right: 0;
+    }
+    .listing-container .swiper-button-prev{
+        right: 40px;
+    }
+}
+
+.not-exists{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(213, 211, 211);
+    width: 100%;
+    height: 20rem;
+    font-size: 2rem;
+    padding: 4rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-weight: 600;
+    font-family: 'Nunito Sans';
+}

@@ -1,0 +1,33 @@
+.card-section-landing-page{
+    padding: 1rem 16%;
+    margin-top: 1rem;
+}
+
+.card-section-head{
+    color:#4086c1;
+    font-size: 2rem;
+    font-weight: 600;
+    margin-top: 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.card-section-landing-page>.card-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: nowrap;
+}
+
+@media (max-width: 780px) {
+    .card-section-landing-page>.card-container{
+        flex-wrap: wrap;
+    }
+    .card-section-landing-page{
+        padding: 1rem 10%;
+        margin-top: 1rem;
+    }
+    .card-section-head{
+        text-align: center;
+    }
+}

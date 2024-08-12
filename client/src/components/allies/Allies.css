@@ -1,0 +1,32 @@
+.allied-companies{
+    padding: 1.8rem 16%;
+    margin-top: 2rem;
+}
+
+.allied-head{
+    color: rgb(227, 131, 83);
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.allies{
+    margin-top: 2.8rem;
+    display: flex;
+    gap: 6rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width:800px) {
+    .allied-companies{
+        padding: 1.8rem 10%;
+        text-align: center;
+    }
+    .allied-head{
+        text-align: center;
+    }
+    .allies{
+        gap: 2rem;
+    }
+}

@@ -1,0 +1,59 @@
+.listing-card {
+    margin: 2.8rem 0rem;
+    background-color: white;
+    border-radius: 0.6rem;
+    padding: 1.2rem 2rem;
+    width: 70vw;
+    box-shadow: 0 0px 10px rgba(159, 159, 159, 0.382);
+}
+
+.listing-card-head {
+    padding-bottom: 0.2rem;
+    font-size: 1.2rem;
+    color: rgb(227, 131, 83);
+    font-weight: 600;
+    border-bottom: 1px solid black;
+    margin-bottom: 1.4rem;
+}
+
+.label-listingInp {
+    font-size: 0.94rem;
+    font-family: "Nunito sans";
+    font-weight: 680;
+    margin-bottom: 0.5rem;
+}
+
+.location-input-container {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+    gap: 8%;
+}
+
+.location-small-input-container{
+    min-width: 28.8vw;
+}
+
+.listingInp, .small-listingInp {
+    margin: 0.4rem 0rem 1.2rem 0rem;
+    padding: 0.6rem 1.2rem 0.6rem 1.2rem;
+    border: 1px solid #00000051;
+    border-radius: 0.4rem;
+    font-family: "Poppins";
+    font-size: 0.94rem;
+    font-family: "Nunito sans";
+}
+
+.listingInp {
+    min-width: 87.8%;
+}
+
+.small-listingInp {
+    min-width: 82%; 
+}
+
+.map-component{
+    height: 40vh;
+    width: 57.8vw;
+}

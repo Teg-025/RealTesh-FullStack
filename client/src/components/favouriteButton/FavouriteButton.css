@@ -1,0 +1,10 @@
+/* Favourite button */
+.favourite-button{
+    border: none;
+    background: transparent;
+    position: absolute;
+    z-index: 10;
+    top: 6px;
+    right:6px;
+    cursor: pointer;
+}
