@@ -41,7 +41,7 @@ export default function ProfileListing(props){
                         {
                             profileListings.map((listing) => {
 
-                                const wishListImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `http://localhost:8000${imgObjUrl}`);
+                                const wishListImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
                                 return (
                                     <SwiperSlide key={listing._id}>
                                         <PropertyCard

@@ -23,7 +23,7 @@ export default function BookingModal(props) {
             try {
                 // Only if user is logged In
                 if (userId) { 
-                    const response = await fetch(`http://localhost:8000/checkBooking/${listingId}`, {
+                    const response = await fetch(`https://realtesh.onrender.com/checkBooking/${listingId}`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ export default function BookingModal(props) {
 
         async function fetchUnavailableDates() {
             try {
-                const response = await fetch(`http://localhost:8000/getUnavailableDates/${listingId}`);
+                const response = await fetch(`https://realtesh.onrender.com/getUnavailableDates/${listingId}`);
                 const data = await response.json();
                 setUnavailableDates(data.unAvailableDates);
             } catch (error) {
@@ -71,7 +71,7 @@ export default function BookingModal(props) {
 
         setIsLoading(true);
         try {
-            const response = await fetch(`http://localhost:8000/book/${listingId}`, {
+            const response = await fetch(`https://realtesh.onrender.com/book/${listingId}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

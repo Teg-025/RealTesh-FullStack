@@ -32,7 +32,7 @@ export default function ProfilePage() {
 
         async function fetchWishList() {
             try {
-                const response = await fetch("http://localhost:8000/wishList/getWishList", {
+                const response = await fetch("https://realtesh.onrender.com/wishList/getWishList", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ export default function ProfilePage() {
 
         async function fetchUserListings() {
             try {
-                const response = await fetch("http://localhost:8000/get/checkUserListings", {
+                const response = await fetch("https://realtesh.onrender.com/get/checkUserListings", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'

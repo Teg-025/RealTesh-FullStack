@@ -23,7 +23,7 @@ export default function FavoriteButton({ listingId}) {
 
         async function fetchFavouriteStatus() {
             try {
-                const response = await fetch("http://localhost:8000/wishList/isFavourited", {
+                const response = await fetch("https://realtesh.onrender.com/wishList/isFavourited", {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
@@ -50,7 +50,7 @@ export default function FavoriteButton({ listingId}) {
         try {
             let response;
             if (isFavourited === false) {
-                response = await fetch("http://localhost:8000/wishList/pushToWishList", {
+                response = await fetch("https://realtesh.onrender.com/wishList/pushToWishList", {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'
@@ -58,7 +58,7 @@ export default function FavoriteButton({ listingId}) {
                     body: JSON.stringify({ userId, listingId })
                 });
             } else {
-                response = await fetch("http://localhost:8000/wishList/deleteFromWishList", {
+                response = await fetch("https://realtesh.onrender.com/wishList/deleteFromWishList", {
                     method: 'POST',
                     headers: {
                         'Content-type': 'application/json'

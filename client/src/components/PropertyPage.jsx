@@ -41,7 +41,7 @@ export default function PropertyPage() {
     useEffect(() => {
         async function fetchProperty() {
             try {
-                const response = await fetch(`http://localhost:8000/get/property/${listingId}`);
+                const response = await fetch(`https://realtesh.onrender.com/get/property/${listingId}`);
                 const data = await response.json();
                 setListing(data);
             } catch (error) {
@@ -82,7 +82,7 @@ export default function PropertyPage() {
         setIsModalOpen(true);
     }
 
-    const imageUrls = listing.listingPhotosUrls.map(imgObjUrl => `http://localhost:8000${imgObjUrl}`);
+    const imageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
     const displayedImages = showAllImages ? imageUrls : imageUrls.slice(0, 5);
 
     return (

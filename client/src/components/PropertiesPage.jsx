@@ -20,7 +20,7 @@ export default function PropertiesPage(){
     useEffect(()=>{
         async function fetchData(){
             try{
-                const response = await fetch("http://localhost:8000/get/properties")
+                const response = await fetch("https://realtesh.onrender.com/get/properties")
                 const data = await response.json();
                 setListings(data);
             }
@@ -97,7 +97,7 @@ export default function PropertiesPage(){
                 <div className="properties-list">
                     {filteredListings.map((listing) => {
 
-                        const ImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `http://localhost:8000${imgObjUrl}`);
+                        const ImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
                         
                         return(
                             <PropertyCard

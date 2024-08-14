@@ -33,7 +33,7 @@ export default function RegisterPage(){
         event.preventDefault();
 
         try{
-            const response = await fetch("http://localhost:8000/auth/register", {
+            const response = await fetch("https://realtesh.onrender.com/auth/register", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
