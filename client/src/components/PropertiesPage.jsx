@@ -96,13 +96,11 @@ export default function PropertiesPage(){
             <div className="flex-center-properties-page">
                 <div className="properties-list">
                     {filteredListings.map((listing) => {
-
-                        const ImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
                         
                         return(
                             <PropertyCard
                                 listing={listing}
-                                ImageUrls={ImageUrls}
+                                ImageUrls={listing.listingPhotosUrls}
                                 key={listing._id} 
                             />
                         )

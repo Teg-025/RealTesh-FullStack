@@ -1,11 +1,11 @@
 const router = require("express").Router();
 const Listing = require("../models/Listing");
 const User = require('../models/User') 
-const upload = require('../middleware/upload')
+const uploadToFirebase = require('../middleware/upload');
 
 // Add listing
-router.post('/addListing', upload.array('photos', 10), async(req,res)=>{
-    try{
+router.post('/addListing', uploadToFirebase, async(req, res) => {
+    try {
         const {
             userRef,
             streetAddress,
@@ -20,18 +20,17 @@ router.post('/addListing', upload.array('photos', 10), async(req,res)=>{
             propertyDesc,
         } = req.body;
 
-        if (!req.files || req.files.length === 0){
-            return res.status(400).json({error: "No files uploaded"})
+        if (!req.uploadedFiles || req.uploadedFiles.length === 0) {
+            return res.status(400).json({ error: "No files uploaded" });
         }
 
-        const listingPhotosUrls = req.files.map(file => `/uploads/${file.filename}`);
+        const listingPhotosUrls = req.uploadedFiles;
 
         let address;
-        if(apartment!=''){
-            address = `${apartment}, ${streetAddress}, ${city}, ${country}`
-        }
-        else {
-            address = `${streetAddress}, ${city}, ${country}`
+        if (apartment !== '') {
+            address = `${apartment}, ${streetAddress}, ${city}, ${country}`;
+        } else {
+            address = `${streetAddress}, ${city}, ${country}`;
         }
         const parsedQuantity = JSON.parse(quantity);
 
@@ -49,25 +48,26 @@ router.post('/addListing', upload.array('photos', 10), async(req,res)=>{
             parkings: parsedQuantity.parking,
             listingPhotosUrls,
             price
-        })
+        });
 
-        await newListing.save()
+        await newListing.save();
 
         const user = await User.findOneAndUpdate(
-            {email: userRef},
-            {$push: {userListings: newListing._id}},
-            {new: true}
+            { email: userRef },
+            { $push: { userListings: newListing._id } },
+            { new: true }
         );
 
-        res.status(200).json({message: "New listing created successfully"})
+        res.status(200).json({ message: "New listing created successfully" });
 
-    }
-    catch(error){
+    } catch (error) {
         console.log(error);
-        res.status(500).json({message: "Some server error occured"})
+        res.status(500).json({ message: "Some server error occurred" });
     }
-})
+});
 
+
+// Get properties
 router.get('/properties', async(req,res)=>{
     try{
         const listings = await Listing.find()
