@@ -86,7 +86,7 @@ export default function AddListingPage(){
             formData.append('propertyName', propertyDesc.propertyName);
             formData.append('propertyDesc', propertyDesc.propertyDesc);
 
-            const response = await fetch("https://realtesh.onrender.com/create/addListing", {
+            const response = await fetch("http://loaclhost:8000/create/addListing", {
                 method: 'POST',
                 body: formData
             })
