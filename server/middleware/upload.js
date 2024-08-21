@@ -18,7 +18,7 @@ const uploadToFirebase = (req, res, next) => {
 
   const uploads = req.files.map(file => {
     return new Promise((resolve, reject) => {
-      const blob = bucket.file(`${file.originalname}`);
+      const blob = bucket.file(`${Date.now()}_${file.originalname}`);
       const blobStream = blob.createWriteStream({
         metadata: {
           contentType: file.mimetype

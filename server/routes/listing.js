@@ -78,6 +78,7 @@ router.get('/properties', async(req,res)=>{
     }
 })
 
+// Get Single property
 router.get('/property/:listingId', async(req, res)=>{
     try{
         const {listingId} = req.params;
@@ -92,6 +93,7 @@ router.get('/property/:listingId', async(req, res)=>{
     }
 })
 
+// Check User Listing
 router.post('/checkUserListings', async(req,res)=>{
     try{
         const {userEmail} = req.body;
