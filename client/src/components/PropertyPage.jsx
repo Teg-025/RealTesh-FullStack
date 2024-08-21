@@ -82,7 +82,7 @@ export default function PropertyPage() {
         setIsModalOpen(true);
     }
 
-    const imageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
+    const imageUrls = listing.listingPhotosUrls;
     const displayedImages = showAllImages ? imageUrls : imageUrls.slice(0, 5);
 
     return (
