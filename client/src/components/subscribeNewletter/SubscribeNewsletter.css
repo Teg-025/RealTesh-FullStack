@@ -17,11 +17,13 @@
     color: white;
     padding: 2rem;
     /* max-width: 90vw; */
+    text-align: center;
 }
 
 .subscribe-head{
     font-size: 2rem;
     font-weight: 600;
+    text-align: center;
 }
 
 #subscribe-email{
@@ -37,4 +39,5 @@
     #subscribe-email{
         width: 60%;
     }
+    
 }
