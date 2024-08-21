@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const path = require('path')
+const path = require('path');
 
 dotenv.config();
 
@@ -14,18 +14,18 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-const authRoutes = require("./routes/auth")
-app.use("/auth", authRoutes)
+const authRoutes = require("./routes/auth");
+app.use("/auth", authRoutes);
 
-const ListingRoute = require("./routes/listing")
-app.use("/create", ListingRoute)
-app.use("/get", ListingRoute)
+const listingRoute = require("./routes/listing");
+app.use("/create", listingRoute);
+app.use("/get", listingRoute);
 
-const wishListRoute = require("./routes/wishList")
-app.use("/wishList", wishListRoute)
+const wishListRoute = require("./routes/wishList");
+app.use("/wishList", wishListRoute);
 
-const bookingsRoute = require('./routes/booking')
-app.use(bookingsRoute)
+const bookingsRoute = require('./routes/booking');
+app.use(bookingsRoute);
 
 // Upload images from public folder
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
@@ -34,9 +34,11 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 mongoose.connect(process.env.MONGO_URI, { dbName: "RealTesh"})
     .then(()=>{
         app.listen(PORT, ()=>{
-            console.log("Server is running on "+PORT)
-        })
+            console.log("Server is running on "+PORT);
+        });
     })
     .catch((error)=>{
-        console.log(error)
-    })
+        console.log(error);
+    });
+    
+module.exports = app;

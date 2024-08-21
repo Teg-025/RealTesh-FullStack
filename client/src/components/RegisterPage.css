@@ -44,3 +44,9 @@
     color: rgb(172, 33, 33);
     font-size: 0.94rem;
 }
+
+@media (max-width: 440px) {
+    .registerInput{
+        min-width: 16rem;
+    }
+}
