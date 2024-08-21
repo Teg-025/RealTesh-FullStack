@@ -1,32 +1,50 @@
+const firebaseAdmin = require("firebase-admin");
 const multer = require('multer');
+const path = require('path');
 
-// Configure storage
-// This will set image upload destination to “uploads” folder 
-// and filename will be same as uploaded file’s original name.
-// here cb is callBack
-const storage = multer.diskStorage({
-    destination: (req, file, cb)=>{
-        cb(null, '../server/public/uploads')
-    },
-    filename: (req, file, cb)=>{
-        cb(null, file.originalname)
-    }
-})
+// Initialize Firebase Admin SDK
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(require('../firebase-adminsdk.json')),
+  storageBucket: process.env.STORAGE_BUCKET
+});
 
+const bucket = firebaseAdmin.storage().bucket();
 
-// Only accept the file if it is of type image
-function fileFilter(req, file,cb){
-    if(file.mimetype === 'image/jpeg' || file.mimetype === 'image/png'){
-        cb(null, true);
-    }
-    else{
-        cb(null, false);
-    }
-}
+// Function to upload file to Firebase Storage
+const uploadToFirebase = (req, res, next) => {
+  if (!req.files || req.files.length === 0) {
+    return res.status(400).json({ error: "No files uploaded" });
+  }
 
-const upload = multer({
-    storage: storage,
-    fileFilter: fileFilter
-})
+  const uploads = req.files.map(file => {
+    return new Promise((resolve, reject) => {
+      const blob = bucket.file(`${Date.now()}_${file.originalname}`);
+      const blobStream = blob.createWriteStream({
+        metadata: {
+          contentType: file.mimetype
+        }
+      });
 
-module.exports = upload;
+      blobStream.on('error', err => reject(err));
+      blobStream.on('finish', () => {
+        blob.makePublic().then(() => {
+          resolve(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+        });
+      });
+
+      blobStream.end(file.buffer);
+    });
+  });
+
+  Promise.all(uploads)
+    .then(urls => {
+      req.uploadedFiles = urls;
+      next();
+    })
+    .catch(error => {
+      console.error('Error uploading to Firebase:', error);
+      res.status(500).json({ error: 'Error uploading files' });
+    });
+};
+
+module.exports = uploadToFirebase;
