@@ -4,7 +4,7 @@ const path = require('path');
 
 // Initialize Firebase Admin SDK
 firebaseAdmin.initializeApp({
-  credential: firebaseAdmin.credential.cert(require('../firebase-adminsdk.json')),
+  credential: firebaseAdmin.credential.cert(require('../firebase.json')),
   storageBucket: process.env.STORAGE_BUCKET
 });
 
