@@ -26,3 +26,8 @@
 .display-property-price{
     font-size: 0.88rem;
 }
+
+.display-property-address{
+    height: 20px;
+    overflow: hidden;
+}
