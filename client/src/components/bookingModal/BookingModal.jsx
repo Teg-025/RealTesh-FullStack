@@ -23,7 +23,7 @@ export default function BookingModal(props) {
         const socket = io("https://realtesh.onrender.com");
 
         socket.on("bookingUpdated", ({ date, time }) => {
-            console.log('Booking updated event received:', { date, time });
+
             if (new Date(date).toDateString() === selectedDate.toDateString()) {
                 setAvailableTimes(prevTimes => {
                     const updatedTimes = prevTimes.map(t =>
