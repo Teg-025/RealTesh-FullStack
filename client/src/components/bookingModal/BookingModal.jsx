@@ -5,6 +5,7 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-time-picker/dist/TimePicker.css';
 import CloseIcon from '@mui/icons-material/Close';
 import { toast } from "react-toastify";
+import { io } from "socket.io-client";
 import './BookingModal.css';
 
 export default function BookingModal(props) {
@@ -17,6 +18,19 @@ export default function BookingModal(props) {
     const [selectedTime, setSelectedTime] = useState("");
     const [availableTimes, setAvailableTimes] = useState([]);
     const [unavailableDates, setUnavailableDates] = useState([]);
+
+    const socket = io("https://realtesh.onrender.com");
+
+    async function fetchUnavailableDates() {
+        try {
+            const response = await fetch(`https://realtesh.onrender.com/getUnavailableDates/${listingId}`);
+            const data = await response.json();
+            setUnavailableDates(data.unAvailableDates);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     useEffect(() => {
         async function fetchAvailableTimes() {
@@ -46,22 +60,31 @@ export default function BookingModal(props) {
             }
         }
 
-        async function fetchUnavailableDates() {
-            try {
-                const response = await fetch(`https://realtesh.onrender.com/getUnavailableDates/${listingId}`);
-                const data = await response.json();
-                setUnavailableDates(data.unAvailableDates);
-            } catch (error) {
-                console.log(error);
-            }
-        }
-
         if (selectedDate) {
             fetchAvailableTimes();
         }
         fetchUnavailableDates();
 
     }, [selectedDate, userId, listingId, selectedTime]);
+
+    useEffect(()=>{
+        socket.on("bookingUpdated", ({date, time})=>{
+            if(new Date(date).toDateString() === selectedDate.toDateString()){
+                setAvailableTimes(prevTimes =>
+                    prevTimes.map(t =>
+                        t.label === time ? {...t, available: false} : t
+                    )
+                )
+            }
+        })
+
+        fetchUnavailableDates();
+
+        return () => {
+            socket.disconnect();
+        }
+    }, [selectedDate]);
+
 
     async function bookVisit() {
         if (!userId) {

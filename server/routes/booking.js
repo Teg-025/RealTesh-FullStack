@@ -1,7 +1,19 @@
-const router = require("express").Router();
+const express = require("express")
+const router = express.Router();
 const Listing = require("../models/Listing");
 const nodemailer = require('nodemailer');
 const User = require('../models/User');
+const http = require('http')
+const socketIo = require('socket.io');
+
+const app = express();
+const server = http.createServer(app);
+const io = socketIo(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+})
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -29,6 +41,14 @@ async function sendBookingEmail(to, subject, text){
         console.error('Error sending email: ', error);
     }
 }
+
+io.on('connection', (socket)=>{
+    console.log('User connected');
+
+    socket.on('disconnect', ()=>{
+        console.log('User dissconnected');
+    })
+})
 
 
 router.post('/checkBooking/:listingId', async(req,res)=>{
@@ -127,6 +147,8 @@ router.post('/book/:listingId', async(req,res)=>{
         listing.bookings.push({userId, date, time});
         await listing.save();
         await Promise.all(emails);
+
+        io.emit('bookingUpdated', {date, time})
 
         res.status(200).json({message: "Booking successful"});
     }
