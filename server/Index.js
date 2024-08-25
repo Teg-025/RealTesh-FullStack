@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(cors());
 
 // Create server instance for Socket.IO
-const server = http.createSrever(app);
+const server = http.createServer(app);
 const io = socketIO(server, {
     cors:{
         origin: "*",
