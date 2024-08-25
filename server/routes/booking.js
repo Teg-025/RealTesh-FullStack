@@ -4,16 +4,6 @@ const Listing = require("../models/Listing");
 const nodemailer = require('nodemailer');
 const User = require('../models/User');
 const http = require('http')
-const socketIo = require('socket.io');
-
-const app = express();
-const server = http.createServer(app);
-const io = socketIo(server, {
-    cors: {
-        origin: "*",
-        methods: ["GET", "POST"]
-    }
-})
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -42,14 +32,15 @@ async function sendBookingEmail(to, subject, text){
     }
 }
 
-io.on('connection', (socket)=>{
-    console.log('User connected');
+module.exports = function(io){
+    io.on('connection', (socket)=>{
+        console.log('User connected');
 
-    socket.on('disconnect', ()=>{
-        console.log('User dissconnected');
+        socket.on('disconnect', ()=>{
+            console.log('User disconnected');
+        })
     })
-})
-
+}
 
 router.post('/checkBooking/:listingId', async(req,res)=>{
 

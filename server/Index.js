@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const cors = require('cors');
-const path = require('path')
+const path = require('path');
+const socketIO = require('socket.io');
+const http = require('http');
 
 dotenv.config();
 
@@ -12,6 +14,15 @@ const PORT = process.env.PORT || 3001;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
+
+// Create server instance for Socket.IO
+const server = http.createSrever(app);
+const io = socketIO(server, {
+    cors:{
+        origin: "*",
+        methods: ["GET", "POST"]
+    }
+})
 
 // Routes
 const authRoutes = require("./routes/auth")
@@ -33,7 +44,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));
 // Mongoose Setup
 mongoose.connect(process.env.MONGO_URI, { dbName: "RealTesh"})
     .then(()=>{
-        app.listen(PORT, ()=>{
+        server.listen(PORT, ()=>{
             console.log("Server is running on "+PORT)
         })
     })
