@@ -35,8 +35,9 @@ app.use("/get", ListingRoute)
 const wishListRoute = require("./routes/wishList")
 app.use("/wishList", wishListRoute)
 
-const bookingsRoute = require('./routes/booking')
+const {router: bookingsRoute, setupSocket} = require('./routes/booking');
 app.use(bookingsRoute)
+setupSocket(io);
 
 // Upload images from public folder
 app.use('/uploads', express.static(path.join(__dirname, 'public/uploads')));

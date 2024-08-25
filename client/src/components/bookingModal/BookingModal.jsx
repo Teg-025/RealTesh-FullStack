@@ -69,6 +69,7 @@ export default function BookingModal(props) {
 
     useEffect(()=>{
         socket.on("bookingUpdated", ({date, time})=>{
+            console.log('Booking updated:', date);
             if(new Date(date).toDateString() === selectedDate.toDateString()){
                 setAvailableTimes(prevTimes =>
                     prevTimes.map(t =>
