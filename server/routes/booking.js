@@ -135,8 +135,7 @@ router.post('/book/:listingId', async (req, res) => {
         await listing.save();
         await Promise.all(emails);
 
-        console.log('Emitting bookingUpdated event:', { date, time, listingId });
-        io.emit('bookingUpdated', { date, time, listingId });
+        io.emit('bookingUpdated', { date, time});
 
         res.status(200).json({ message: "Booking successful" });
     } catch (error) {

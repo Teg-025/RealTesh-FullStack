@@ -27,8 +27,8 @@ export default function BookingModal(props) {
             console.log('Socket connected:', socket.id);
         });
 
-        socket.on("bookingUpdated", ({ date, time, listingId }) => {
-            console.log('Booking updated event received:', { date, time, listingId });
+        socket.on("bookingUpdated", ({ date, time }) => {
+            console.log('Booking updated event received:', { date, time });
             if (new Date(date).toDateString() === selectedDate.toDateString()) {
                 setAvailableTimes(prevTimes => {
                     const updatedTimes = prevTimes.map(t =>
