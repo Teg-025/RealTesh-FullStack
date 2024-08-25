@@ -19,7 +19,40 @@ export default function BookingModal(props) {
     const [availableTimes, setAvailableTimes] = useState([]);
     const [unavailableDates, setUnavailableDates] = useState([]);
 
-    const socket = io("http://localhost:8000");
+    useEffect(() => {
+        const socket = io("http://localhost:8000");
+
+        console.log('Connecting to socket...');
+        socket.on("connect", () => {
+            console.log('Socket connected:', socket.id);
+        });
+
+        socket.on("bookingUpdated", ({ date, time, listingId }) => {
+            console.log('Booking updated event received:', { date, time, listingId });
+            if (new Date(date).toDateString() === selectedDate.toDateString()) {
+                setAvailableTimes(prevTimes => {
+                    const updatedTimes = prevTimes.map(t =>
+                        t.label === time ? { ...t, available: false } : t
+                    );
+                    
+                    // If the currently selected time is booked, find the next available time
+                    if (selectedTime === time) {
+                        const nextAvailableTime = updatedTimes.find(t => t.available);
+                        if (nextAvailableTime) {
+                            setSelectedTime(nextAvailableTime.label);
+                        }
+                    }
+
+                    return updatedTimes;
+                });
+            }
+        });
+
+        return () => {
+            console.log('Disconnecting from socket...');
+            socket.disconnect();
+        };
+    }, [selectedDate, selectedTime]);
 
     async function fetchUnavailableDates() {
         try {
@@ -30,7 +63,6 @@ export default function BookingModal(props) {
             console.log(error);
         }
     }
-
 
     useEffect(() => {
         async function fetchAvailableTimes() {
@@ -66,26 +98,6 @@ export default function BookingModal(props) {
         fetchUnavailableDates();
 
     }, [selectedDate, userId, listingId, selectedTime]);
-
-    useEffect(()=>{
-        socket.on("bookingUpdated", ({date, time})=>{
-            console.log('Booking updated:', date);
-            if(new Date(date).toDateString() === selectedDate.toDateString()){
-                setAvailableTimes(prevTimes =>
-                    prevTimes.map(t =>
-                        t.label === time ? {...t, available: false} : t
-                    )
-                )
-            }
-        })
-
-        fetchUnavailableDates();
-
-        return () => {
-            socket.disconnect();
-        }
-    }, [selectedDate]);
-
 
     async function bookVisit() {
         if (!userId) {
