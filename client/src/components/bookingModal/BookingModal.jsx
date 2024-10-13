@@ -22,8 +22,13 @@ export default function BookingModal(props) {
     useEffect(() => {
         const socket = io("https://realtesh.onrender.com");
 
-        socket.on("bookingUpdated", ({ date, time }) => {
+        console.log('Connecting to socket...');
+        socket.on("connect", () => {
+            console.log('Socket connected:', socket.id);
+        });
 
+        socket.on("bookingUpdated", ({ date, time, listingId }) => {
+            console.log('Booking updated event received:', { date, time, listingId });
             if (new Date(date).toDateString() === selectedDate.toDateString()) {
                 setAvailableTimes(prevTimes => {
                     const updatedTimes = prevTimes.map(t =>
@@ -44,6 +49,7 @@ export default function BookingModal(props) {
         });
 
         return () => {
+            console.log('Disconnecting from socket...');
             socket.disconnect();
         };
     }, [selectedDate, selectedTime]);

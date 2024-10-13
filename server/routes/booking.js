@@ -105,7 +105,7 @@ router.get('/getUnavailableDates/:listingId', async (req, res) => {
         });
 
         bookingCount.forEach((count, date) => {
-            if (count >= 2) {
+            if (count >= 12) {
                 unAvailableDates.push(date);
             }
         });
@@ -135,7 +135,8 @@ router.post('/book/:listingId', async (req, res) => {
         await listing.save();
         await Promise.all(emails);
 
-        io.emit('bookingUpdated', { date, time});
+        console.log('Emitting bookingUpdated event:', { date, time, listingId });
+        io.emit('bookingUpdated', { date, time, listingId });
 
         res.status(200).json({ message: "Booking successful" });
     } catch (error) {
