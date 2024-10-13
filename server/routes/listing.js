@@ -20,9 +20,6 @@ router.post('/addListing', uploadToFirebase, async(req, res) => {
             propertyDesc,
         } = req.body;
 
-        console.log("innn");
-        console.log("Uploaded files:", req.uploadedFiles);
-
         if (!req.uploadedFiles || req.uploadedFiles.length === 0) {
             return res.status(400).json({ error: "No files uploaded" });
         }

@@ -66,16 +66,23 @@ router.post('/getWishList', async(req, res)=>{
             return res.status(404).json({message: "User not found"});
         }
 
-        const wishListingsId = user.wishList;
-        const wishListings = await Listings.find({ _id: { $in: wishListingsId } })
-
-
-        return res.status(200).json({wishListings})
+        const wishListingsIds = user.wishList;
+        
+        if (wishListings.length === 0) {
+            return res.status(200).json({ wishListings: [] });
+        }
+        
+        const wishListings = await Listing.find({ _id: { $in: wishListingsIds } });
+        const wishListingsWithPhotos = wishListings.map(listing => ({
+          id: listing._id,
+          listingPhotosUrls: listing.listingPhotosUrls, 
+        }));
+    
+        return res.status(200).json({ wishListings: wishListingsWithPhotos });
     }
     catch(error){
         return res.status(500).json({ message: "Server error" });
     }
 })
-
 
 module.exports = router;
