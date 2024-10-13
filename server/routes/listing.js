@@ -96,6 +96,7 @@ router.get('/property/:listingId', async(req, res)=>{
 // Check User Listing
 router.post('/checkUserListings', async(req,res)=>{
     try{
+        console.log("innnn")
         const {userEmail} = req.body;
         const userListings = await Listing.find({userRef: userEmail})
         if(!userListings){

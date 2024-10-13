@@ -32,7 +32,7 @@ export default function ProfilePage() {
 
         async function fetchWishList() {
             try {
-                const response = await fetch("https://realtesh.onrender.com/wishList/getWishList", {
+                const response = await fetch("http://localhost:8000/wishList/getWishList", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,6 +40,7 @@ export default function ProfilePage() {
                     body: JSON.stringify({ userId })
                 });
                 const data = await response.json();
+                console.log(data);
                 setWishList(data.wishListings);
             } catch (error) {
                 console.error("Error fetching wishlist:", error);
@@ -50,7 +51,7 @@ export default function ProfilePage() {
 
         async function fetchUserListings() {
             try {
-                const response = await fetch("https://realtesh.onrender.com/get/checkUserListings", {
+                const response = await fetch("http://localhost:8000/get/checkUserListings", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'application/json'

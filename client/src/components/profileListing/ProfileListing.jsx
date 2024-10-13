@@ -41,12 +41,11 @@ export default function ProfileListing(props){
                         {
                             profileListings.map((listing) => {
 
-                                const wishListImageUrls = listing.listingPhotosUrls.map(imgObjUrl => `https://realtesh.onrender.com${imgObjUrl}`);
                                 return (
                                     <SwiperSlide key={listing._id}>
                                         <PropertyCard
                                             listing={listing}
-                                            ImageUrls={wishListImageUrls}
+                                            ImageUrls={listing.listingPhotosUrls}
                                             userId={userEmail}
                                         />
                                     </SwiperSlide>
